@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinOps Quickref - DArede</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            max-height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #4a5568;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .plans-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 1024px) {
+            .plans-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .plan-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pro-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .essential-badge {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .essential-table th {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:hover {
+            background-color: #e6fffa;
+            transition: background-color 0.2s ease;
+        }
+
+        .currency {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .percentage {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .value {
+            font-weight: 600;
+            color: #38a169;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer h3 {
+            color: #2d3748;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            color: #4a5568;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .plan-title {
+                font-size: 1.5rem;
+            }
+            
+            th, td {
+                padding: 8px 6px;
+                font-size: 0.8rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="public/images/darede-logotipo-300x112.png" alt="DArede Logo" class="logo">
+            <h1>FinOps Quickref</h1>
+            <p>Material de Referência Rápida - Soluções FinOps</p>
+        </header>
+
+        <div class="plans-container">
+            <!-- FinOps Pro -->
+            <div class="plan-card">
+                <h2 class="plan-title">
+                    FinOps Pro
+                    <span class="plan-badge pro-badge">Avançado</span>
+                </h2>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Billing Máximo AWS</th>
+                                <th>Custo Total</th>
+                                <th>Markup</th>
+                                <th>Markup %</th>
+                                <th>FinOps Pro</th>
+                                <th>% Billing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="currency">U$ 2,0k</td><td>R$ 653,94</td><td>R$ 1.346,06</td><td class="percentage">206%</td><td class="value">R$ 2.000,00</td><td class="percentage">17,1%</td></tr>
+                            <tr><td class="currency">U$ 3,0k</td><td>R$ 670,60</td><td>R$ 1.529,40</td><td class="percentage">228%</td><td class="value">R$ 2.200,00</td><td class="percentage">12,5%</td></tr>
+                            <tr><td class="currency">U$ 4,0k</td><td>R$ 687,26</td><td>R$ 1.812,74</td><td class="percentage">264%</td><td class="value">R$ 2.500,00</td><td class="percentage">10,7%</td></tr>
+                            <tr><td class="currency">U$ 5,0k</td><td>R$ 703,92</td><td>R$ 1.996,08</td><td class="percentage">284%</td><td class="value">R$ 2.700,00</td><td class="percentage">9,2%</td></tr>
+                            <tr><td class="currency">U$ 6,0k</td><td>R$ 720,58</td><td>R$ 2.379,42</td><td class="percentage">330%</td><td class="value">R$ 3.100,00</td><td class="percentage">8,8%</td></tr>
+                            <tr><td class="currency">U$ 8,0k</td><td>R$ 842,56</td><td>R$ 2.657,44</td><td class="percentage">315%</td><td class="value">R$ 3.500,00</td><td class="percentage">7,5%</td></tr>
+                            <tr><td class="currency">U$ 10,0k</td><td>R$ 875,88</td><td>R$ 3.324,12</td><td class="percentage">380%</td><td class="value">R$ 4.200,00</td><td class="percentage">7,2%</td></tr>
+                            <tr><td class="currency">U$ 12,5k</td><td>R$ 1.094,85</td><td>R$ 3.905,15</td><td class="percentage">357%</td><td class="value">R$ 5.000,00</td><td class="percentage">6,8%</td></tr>
+                            <tr><td class="currency">U$ 15,0k</td><td>R$ 1.136,50</td><td>R$ 4.763,50</td><td class="percentage">419%</td><td class="value">R$ 5.900,00</td><td class="percentage">6,7%</td></tr>
+                            <tr><td class="currency">U$ 17,5k</td><td>R$ 1.178,15</td><td>R$ 5.621,85</td><td class="percentage">477%</td><td class="value">R$ 6.800,00</td><td class="percentage">6,6%</td></tr>
+                            <tr><td class="currency">U$ 20,0k</td><td>R$ 1.219,80</td><td>R$ 6.480,20</td><td class="percentage">531%</td><td class="value">R$ 7.700,00</td><td class="percentage">6,6%</td></tr>
+                            <tr><td class="currency">U$ 25,0k</td><td>R$ 1.480,42</td><td>R$ 7.119,58</td><td class="percentage">481%</td><td class="value">R$ 8.600,00</td><td class="percentage">5,9%</td></tr>
+                            <tr><td class="currency">U$ 30,0k</td><td>R$ 1.652,38</td><td>R$ 7.847,62</td><td class="percentage">475%</td><td class="value">R$ 9.500,00</td><td class="percentage">5,4%</td></tr>
+                            <tr><td class="currency">U$ 35,0k</td><td>R$ 1.735,68</td><td>R$ 8.764,32</td><td class="percentage">505%</td><td class="value">R$ 10.500,00</td><td class="percentage">5,1%</td></tr>
+                            <tr><td class="currency">U$ 40,0k</td><td>R$ 1.907,64</td><td>R$ 9.592,36</td><td class="percentage">503%</td><td class="value">R$ 11.500,00</td><td class="percentage">4,9%</td></tr>
+                            <tr><td class="currency">U$ 45,0k</td><td>R$ 2.079,60</td><td>R$ 10.420,40</td><td class="percentage">501%</td><td class="value">R$ 12.500,00</td><td class="percentage">4,7%</td></tr>
+                            <tr><td class="currency">U$ 50,0k</td><td>R$ 2.251,56</td><td>R$ 11.248,44</td><td class="percentage">500%</td><td class="value">R$ 13.500,00</td><td class="percentage">4,6%</td></tr>
+                            <tr><td class="currency">U$ 60,0k</td><td>R$ 2.595,48</td><td>R$ 12.004,52</td><td class="percentage">463%</td><td class="value">R$ 14.600,00</td><td class="percentage">4,2%</td></tr>
+                            <tr><td class="currency">U$ 70,0k</td><td>R$ 2.939,40</td><td>R$ 12.760,60</td><td class="percentage">434%</td><td class="value">R$ 15.700,00</td><td class="percentage">3,8%</td></tr>
+                            <tr><td class="currency">U$ 80,0k</td><td>R$ 3.283,32</td><td>R$ 13.516,68</td><td class="percentage">412%</td><td class="value">R$ 16.800,00</td><td class="percentage">3,6%</td></tr>
+                            <tr><td class="currency">U$ 90,0k</td><td>R$ 3.760,23</td><td>R$ 14.139,77</td><td class="percentage">376%</td><td class="value">R$ 17.900,00</td><td class="percentage">3,4%</td></tr>
+                            <tr><td class="currency">U$ 100,0k</td><td>R$ 4.148,48</td><td>R$ 14.851,52</td><td class="percentage">358%</td><td class="value">R$ 19.000,00</td><td class="percentage">3,2%</td></tr>
+                            <tr><td class="currency">U$ 125,0k</td><td>R$ 5.008,28</td><td>R$ 15.091,72</td><td class="percentage">301%</td><td class="value">R$ 20.100,00</td><td class="percentage">2,7%</td></tr>
+                            <tr><td class="currency">U$ 150,0k</td><td>R$ 5.956,74</td><td>R$ 15.343,26</td><td class="percentage">258%</td><td class="value">R$ 21.300,00</td><td class="percentage">2,4%</td></tr>
+                            <tr><td class="currency">U$ 175,0k</td><td>R$ 6.816,54</td><td>R$ 15.683,46</td><td class="percentage">230%</td><td class="value">R$ 22.500,00</td><td class="percentage">2,2%</td></tr>
+                            <tr><td class="currency">U$ 200,0k</td><td>R$ 7.676,34</td><td>R$ 16.023,66</td><td class="percentage">209%</td><td class="value">R$ 23.700,00</td><td class="percentage">2,0%</td></tr>
+                            <tr><td class="currency">U$ 250,0k</td><td>R$ 9.573,26</td><td>R$ 15.926,74</td><td class="percentage">166%</td><td class="value">R$ 25.500,00</td><td class="percentage">1,7%</td></tr>
+                            <tr><td class="currency">U$ 300,0k</td><td>R$ 11.292,86</td><td>R$ 16.207,14</td><td class="percentage">144%</td><td class="value">R$ 27.500,00</td><td class="percentage">1,6%</td></tr>
+                            <tr><td class="currency">U$ 350,0k</td><td>R$ 13.101,12</td><td>R$ 16.398,88</td><td class="percentage">125%</td><td class="value">R$ 29.500,00</td><td class="percentage">1,4%</td></tr>
+                            <tr><td class="currency">U$ 400,0k</td><td>R$ 14.820,72</td><td>R$ 16.679,28</td><td class="percentage">113%</td><td class="value">R$ 31.500,00</td><td class="percentage">1,3%</td></tr>
+                            <tr><td class="currency">U$ 450,0k</td><td>R$ 16.540,32</td><td>R$ 17.159,68</td><td class="percentage">104%</td><td class="value">R$ 33.700,00</td><td class="percentage">1,3%</td></tr>
+                            <tr><td class="currency">U$ 500,0k</td><td>R$ 18.703,22</td><td>R$ 17.196,78</td><td class="percentage">92%</td><td class="value">R$ 35.900,00</td><td class="percentage">1,2%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FinOps Essential -->
+            <div class="plan-card">
+                <h2 class="plan-title">
+                    FinOps Essential
+                    <span class="plan-badge essential-badge">Essencial</span>
+                </h2>
+                
+                <div class="table-container">
+                    <table class="essential-table">
+                        <thead>
+                            <tr>
+                                <th>Billing a Partir de</th>
+                                <th>Valor Essential</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="currency">U$ 0,0k</td><td class="value">R$ 2.000,00</td></tr>
+                            <tr><td class="currency">U$ 20,0k</td><td class="percentage">1,5%</td></tr>
+                            <tr><td class="currency">U$ 30,0k</td><td class="percentage">1,3%</td></tr>
+                            <tr><td class="currency">U$ 50,0k</td><td class="percentage">1,0%</td></tr>
+                            <tr><td class="currency">U$ 100,0k</td><td class="percentage">0,8%</td></tr>
+                            <tr><td class="currency">U$ 200,0k</td><td class="percentage">0,75%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 20px; padding: 20px; background: #f8fafc; border-radius: 15px; border-left: 4px solid #4facfe;">
+                    <h4 style="color: #2d3748; margin-bottom: 10px; font-weight: 600;">📋 Características do Essential:</h4>
+                    <ul style="color: #4a5568; line-height: 1.8; padding-left: 20px;">
+                        <li>Valor fixo inicial de <span class="highlight">R$ 2.000,00</span></li>
+                        <li>Percentual sobre billing a partir de U$ 20k</li>
+                        <li>Redução progressiva do percentual</li>
+                        <li>Ideal para empresas em crescimento</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <h3>🚀 Otimize seus custos na nuvem com <span class="highlight">FinOps DArede</span></h3>
+            <p>Soluções completas para gestão financeira de infraestrutura em nuvem</p>
+            <p>Reduza custos, aumente eficiência e tenha visibilidade total dos seus gastos AWS</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <span>brunoprodutos.github.io/catalogo-finops</span>
+                </div>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>Contato via catálogo online</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <span>Consultoria especializada</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
