@@ -12,12 +12,66 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --darede-green: #11713F;
+            --darede-gray: #2F2F2F;
+            --darede-orange: #F1A22D;
+            --darede-light-gray: #E7E6E6;
+            --darede-medium-gray: #757070;
+            --darede-dark-orange: #C97D0D;
+            --darede-dark-green: #0C502C;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--darede-gray);
+            background: linear-gradient(135deg, var(--darede-light-gray) 0%, #ffffff 100%);
             min-height: 100vh;
+            padding-top: 120px; /* Space for fixed header */
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--darede-green) 0%, var(--darede-dark-green) 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(17, 113, 63, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            max-height: 60px;
+            filter: brightness(0) invert(1); /* Make logo white */
+        }
+
+        .selo-premier {
+            max-height: 50px;
+        }
+
+        .header-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .container {
@@ -26,34 +80,25 @@
             padding: 20px;
         }
 
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+        .intro-section {
+            background: white;
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(17, 113, 63, 0.1);
+            border: 2px solid var(--darede-light-gray);
         }
 
-        .logo {
-            max-height: 80px;
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            color: #2d3748;
+        .intro-section h1 {
+            color: var(--darede-green);
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        .header p {
-            color: #4a5568;
+        .intro-section p {
+            color: var(--darede-medium-gray);
             font-size: 1.2rem;
             font-weight: 400;
         }
@@ -72,24 +117,25 @@
         }
 
         .plan-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(17, 113, 63, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid var(--darede-light-gray);
         }
 
         .plan-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(17, 113, 63, 0.15);
+            border-color: var(--darede-green);
         }
 
         .plan-title {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 20px;
-            color: #2d3748;
+            color: var(--darede-gray);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -104,19 +150,19 @@
         }
 
         .pro-badge {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--darede-green);
             color: white;
         }
 
         .essential-badge {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            background: var(--darede-orange);
             color: white;
         }
 
         .table-container {
             overflow-x: auto;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(17, 113, 63, 0.1);
         }
 
         table {
@@ -128,7 +174,7 @@
         }
 
         th {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--darede-green);
             color: white;
             padding: 15px 12px;
             text-align: center;
@@ -137,58 +183,58 @@
         }
 
         .essential-table th {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            background: var(--darede-orange);
         }
 
         td {
             padding: 12px;
             text-align: center;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--darede-light-gray);
             font-size: 0.9rem;
         }
 
         tr:nth-child(even) {
-            background-color: #f8fafc;
+            background-color: #f8f9fa;
         }
 
         tr:hover {
-            background-color: #e6fffa;
+            background-color: rgba(17, 113, 63, 0.05);
             transition: background-color 0.2s ease;
         }
 
         .currency {
             font-weight: 600;
-            color: #2d3748;
+            color: var(--darede-gray);
         }
 
         .percentage {
             font-weight: 600;
-            color: #667eea;
+            color: var(--darede-green);
         }
 
         .value {
             font-weight: 600;
-            color: #38a169;
+            color: var(--darede-dark-green);
         }
 
         .footer {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: white;
             border-radius: 20px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(17, 113, 63, 0.1);
+            border: 2px solid var(--darede-light-gray);
         }
 
         .footer h3 {
-            color: #2d3748;
+            color: var(--darede-green);
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 15px;
         }
 
         .footer p {
-            color: #4a5568;
+            color: var(--darede-medium-gray);
             font-size: 1rem;
             margin-bottom: 10px;
         }
@@ -205,24 +251,67 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #667eea;
+            color: var(--darede-green);
             font-weight: 500;
         }
 
         .highlight {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--darede-orange);
             font-weight: 700;
         }
 
+        .essential-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(241, 162, 45, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid var(--darede-orange);
+        }
+
+        .essential-info h4 {
+            color: var(--darede-gray);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .essential-info ul {
+            color: var(--darede-medium-gray);
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
         @media (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .logo-section {
+                gap: 15px;
+            }
+            
+            .logo {
+                max-height: 45px;
+            }
+            
+            .selo-premier {
+                max-height: 40px;
+            }
+            
+            .header-title {
+                font-size: 1.4rem;
+            }
+            
             .container {
                 padding: 15px;
             }
             
-            .header h1 {
+            .intro-section h1 {
                 font-size: 2rem;
             }
             
@@ -243,12 +332,21 @@
     </style>
 </head>
 <body>
+    <header class="fixed-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="public/images/darede-logotipo-300x112.png" alt="DArede Logo" class="logo">
+                <img src="public/images/selo-premier.svg" alt="Selo Premier" class="selo-premier">
+            </div>
+            <h1 class="header-title">FinOps Quickref</h1>
+        </div>
+    </header>
+
     <div class="container">
-        <header class="header">
-            <img src="public/images/darede-logotipo-300x112.png" alt="DArede Logo" class="logo">
-            <h1>FinOps Quickref</h1>
-            <p>Material de Referência Rápida - Soluções FinOps</p>
-        </header>
+        <section class="intro-section">
+            <h1>Material de Referência Rápida</h1>
+            <p>Soluções FinOps para Otimização de Custos AWS</p>
+        </section>
 
         <div class="plans-container">
             <!-- FinOps Pro -->
@@ -334,9 +432,9 @@
                     </table>
                 </div>
 
-                <div style="margin-top: 20px; padding: 20px; background: #f8fafc; border-radius: 15px; border-left: 4px solid #4facfe;">
-                    <h4 style="color: #2d3748; margin-bottom: 10px; font-weight: 600;">📋 Características do Essential:</h4>
-                    <ul style="color: #4a5568; line-height: 1.8; padding-left: 20px;">
+                <div class="essential-info">
+                    <h4>📋 Características do Essential:</h4>
+                    <ul>
                         <li>Valor fixo inicial de <span class="highlight">R$ 2.000,00</span></li>
                         <li>Percentual sobre billing a partir de U$ 20k</li>
                         <li>Redução progressiva do percentual</li>
