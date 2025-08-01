@@ -236,11 +236,20 @@
             background: #f8f9fa;
         }
 
-        .pricing-table tr:hover {
-            background: rgba(17, 113, 63, 0.05);
-        }
+            .pricing-table tr:hover {
+                background: rgba(17, 113, 63, 0.05);
+            }
 
-        .percentage {
+            .minimum-price-row {
+                background: linear-gradient(135deg, rgba(17, 113, 63, 0.1) 0%, rgba(241, 162, 45, 0.1) 100%) !important;
+                border-bottom: 2px solid var(--darede-orange);
+            }
+
+            .price-highlight {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--darede-orange);
+            }        .percentage {
             font-weight: 700;
             color: var(--darede-green);
             font-size: 1.1rem;
@@ -600,7 +609,6 @@
             <h2>💰 Estrutura de Precificação</h2>
             <div class="highlight-box">
                 <p><strong>Cobrança baseada em percentuais do billing AWS</strong> - estrutura clara e transparente</p>
-                <p><em>Piso mínimo: R$ 1.500 para FinOps Essential | Conversão: 1 USD = 5,60 BRL</em></p>
             </div>
 
             <h3>📊 Percentuais por Billing AWS</h3>
@@ -614,6 +622,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr class="minimum-price-row">
+                            <td><strong>Preço Mínimo Mensal</strong></td>
+                            <td><span class="price-highlight">R$ 1.000,00</span></td>
+                            <td><span class="price-highlight">R$ 2.500,00</span></td>
+                        </tr>
                         <tr>
                             <td><strong>Até US$ 10k</strong></td>
                             <td><span class="percentage">2,7%</span></td>
