@@ -14,9 +14,9 @@
 
         :root {
             --darede-green: #11713F;
-                    <h2>💡 Argumentos de Venda - FinOps Darede</h2>   --darede-gray: #2F2F2F;
+            --darede-gray: #2F2F2F;
             --darede-orange: #F1A22D;
-            --dare            <h2>💰 Estrutura de Precificação</h2>e-light-gray: #E7E7E7;
+            --darede-light-gray: #E7E7E7;
             --darede-medium-gray: #757070;
             --darede-dark-orange: #C97D0D;
             --darede-dark-green: #0C502C;
@@ -40,7 +40,6 @@
             padding: 15px 0;
             box-shadow: 0 4px 20px rgba(17, 113, 63, 0.3);
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
 
         .header-content {
@@ -92,6 +91,39 @@
             color: var(--darede-medium-gray);
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-buttons .btn {
+            font-size: 1rem;
+            padding: 12px 20px;
+            background: rgba(17, 113, 63, 0.1);
+            color: var(--darede-green);
+            border: 2px solid var(--darede-green);
+        }
+
+        .nav-buttons .btn:hover {
+            background: var(--darede-green);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(17, 113, 63, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-buttons {
+                gap: 10px;
+            }
+            .nav-buttons .btn {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
         }
 
         .section {
@@ -415,11 +447,18 @@
     <div class="container">
         <section class="hero">
             <h1>FinOps Quickref</h1>
-            <p>Guia de referência rápida para soluções FinOps da DArede</p>
+            <p>Guia de referência rápida para soluções FinOps da Darede</p>
+            <div class="nav-buttons" style="margin-top: 30px;">
+                <a href="#framework" class="btn">Framework FinOps</a>
+                <a href="#pain-points" class="btn">A Dor do Cliente</a>
+                <a href="#solution" class="btn">Nossa Solução</a>
+                <a href="#pricing" class="btn">Precificação</a>
+                <a href="#sales" class="btn">Argumentos de Venda</a>
+            </div>
         </section>
 
 
-        <section class="section">
+        <section id="pain-points" class="section">
             <h2>🎯 A Dor do Cliente</h2>
             <div class="pain-points">
                 <div class="pain-point">
@@ -465,7 +504,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section id="solution" class="section">
             <h2>🚀 Nossa Solução</h2>
             <p>A Darede oferece <strong>dois planos estratégicos</strong> para diferentes necessidades e maturidades de FinOps, todos baseados na <strong>plataforma Pier</strong> para máxima eficiência e automação.</p>
 
@@ -614,7 +653,7 @@
             }
         </style>
 
-        <section class="section">
+        <section id="pricing" class="section">
             <h2>💰 Estrutura de Precificação</h2>
             <div class="highlight-box">
                 <p><strong>Cobrança baseada em percentuais do billing AWS</strong> - estrutura clara e transparente</p>
@@ -676,7 +715,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section id="sales" class="section">
             <h2>💡 Argumentos de Venda - FinOps Darede</h2>
             <div class="sales-arguments">
                 <div class="argument-card">
