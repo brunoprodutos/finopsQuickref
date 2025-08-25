@@ -51,11 +51,21 @@
             padding: 0 20px;
         }
 
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
             color: white;
             font-size: 24px;
             font-weight: 700;
-            text-decoration: none;
         }
 
         .header-subtitle {
@@ -94,11 +104,13 @@
         }
 
         .nav-buttons {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
             justify-content: center;
             align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .nav-buttons .btn {
@@ -107,6 +119,8 @@
             background: rgba(17, 113, 63, 0.1);
             color: var(--darede-green);
             border: 2px solid var(--darede-green);
+            text-align: center;
+            white-space: nowrap;
         }
 
         .nav-buttons .btn:hover {
@@ -118,11 +132,19 @@
 
         @media (max-width: 768px) {
             .nav-buttons {
+                grid-template-columns: 1fr 1fr;
                 gap: 10px;
             }
             .nav-buttons .btn {
                 font-size: 0.9rem;
                 padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-buttons {
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
         }
 
@@ -404,6 +426,47 @@
             font-size: 14px;
         }
 
+        .objections-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .objection-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-left: 5px solid var(--darede-orange);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .objection-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(17, 113, 63, 0.15);
+        }
+
+        .objection-item h4 {
+            color: var(--darede-green);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .objection-item p {
+            color: var(--darede-gray);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .objection-item strong {
+            color: #262626;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -439,8 +502,12 @@
 <body>
     <header class="fixed-header">
         <div class="header-content">
-            <a href="#" class="logo">FinOps Darede</a>
-            <div class="header-subtitle">Tenha controle total dos seus custos</div>
+            <div class="logo-container">
+                <img src="public/images/darede-logotipo-300x112.png" alt="Darede" class="logo-image">
+            </div>
+            <div class="header-subtitle">
+                <img src="public/images/selo-premier.svg" alt="Selo Premier" style="height: 30px; width: auto;">
+            </div>
         </div>
     </header>
 
@@ -449,58 +516,11 @@
             <h1>FinOps Quickref</h1>
             <p>Guia de referência rápida para soluções FinOps da Darede</p>
             <div class="nav-buttons" style="margin-top: 30px;">
-                <a href="#framework" class="btn">Framework FinOps</a>
-                <a href="#pain-points" class="btn">A Dor do Cliente</a>
                 <a href="#solution" class="btn">Nossa Solução</a>
+                <a href="#pain-points" class="btn">A Dor do Cliente</a>
                 <a href="#pricing" class="btn">Precificação</a>
-                <a href="#sales" class="btn">Argumentos de Venda</a>
-            </div>
-        </section>
-
-
-        <section id="pain-points" class="section">
-            <h2>🎯 A Dor do Cliente</h2>
-            <div class="pain-points">
-                <div class="pain-point">
-                    <h4>Faturas Inesperadas</h4>
-                    <p>Variações significativas nos custos mensais sem previsibilidade</p>
-                </div>
-                <div class="pain-point">
-                    <h4>Custos sem Alocação</h4>
-                    <p>Recursos não categorizados gerando despesas não rastreáveis</p>
-                </div>
-                <div class="pain-point">
-                    <h4>Crescimento Acelerado</h4>
-                    <p>Escalabilidade rápida sem controles financeiros adequados</p>
-                </div>
-                <div class="pain-point">
-                    <h4>Custos AWS Elevados</h4>
-                    <p>Gastos significativos sem otimização adequada</p>
-                </div>
-                <div class="pain-point">
-                    <h4>Gestão Multi-contas</h4>
-                    <p>Complexidade no gerenciamento de múltiplos times e contas</p>
-                </div>
-                <div class="pain-point">
-                    <h4>Equipe Sobrecarregada</h4>
-                    <p>Times técnicos sem tempo para análise e otimização</p>
-                </div>
-                <div class="pain-point">
-                    <h4>Desperdício de Recursos</h4>
-                    <p>Falta de monitoramento levando a recursos ociosos</p>
-                </div>
-                <div class="pain-point">
-                    <h4>Gaps de Conformidade</h4>
-                    <p>Riscos de segurança e compliance por falta de governança</p>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="section">
-            <h2>💰 Framework FinOps</h2>
-            <div style="text-align: center; margin: 30px 0;">
-                <img src="assets/Framework_Finops.png" alt="Framework FinOps" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                <a href="#sales" class="btn">Arg. de Venda</a>
+                <a href="#objections" class="btn">Objeções</a>
             </div>
         </section>
 
@@ -555,6 +575,52 @@
 
             <div style="text-align: center; margin-top: 40px;">
                 <a href="https://brunoprodutos.github.io/catalogo-finops/" target="_blank" class="btn">Tabela Comparativa Completa</a>
+            </div>
+        </section>
+
+        <section id="pain-points" class="section">
+            <h2>🎯 A Dor do Cliente</h2>
+            <div class="pain-points">
+                <div class="pain-point">
+                    <h4>Faturas Inesperadas</h4>
+                    <p>Variações significativas nos custos mensais sem previsibilidade</p>
+                </div>
+                <div class="pain-point">
+                    <h4>Custos sem Alocação</h4>
+                    <p>Recursos não categorizados gerando despesas não rastreáveis</p>
+                </div>
+                <div class="pain-point">
+                    <h4>Crescimento Acelerado</h4>
+                    <p>Escalabilidade rápida sem controles financeiros adequados</p>
+                </div>
+                <div class="pain-point">
+                    <h4>Custos AWS Elevados</h4>
+                    <p>Gastos significativos sem otimização adequada</p>
+                </div>
+                <div class="pain-point">
+                    <h4>Gestão Multi-contas</h4>
+                    <p>Complexidade no gerenciamento de múltiplos times e contas</p>
+                </div>
+                <div class="pain-point">
+                    <h4>Equipe Sobrecarregada</h4>
+                    <p>Times técnicos sem tempo para análise e otimização</p>
+                </div>
+                <div class="pain-point">
+                    <h4>Desperdício de Recursos</h4>
+                    <p>Falta de monitoramento levando a recursos ociosos</p>
+                </div>
+                <div class="pain-point">
+                    <h4>Gaps de Conformidade</h4>
+                    <p>Riscos de segurança e compliance por falta de governança</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <h2>💰 Framework FinOps</h2>
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="assets/Framework_Finops.png" alt="Framework FinOps" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
             </div>
         </section>
 
@@ -715,6 +781,7 @@
             </div>
         </section>
 
+
         <section id="sales" class="section">
             <h2>💡 Argumentos de Venda - FinOps Darede</h2>
             <div class="sales-arguments">
@@ -804,6 +871,63 @@
                         <li>Economia média de 25-35% nos custos cloud</li>
                         <li>Payback em menos de 3 meses</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="objections" class="section">
+            <h2>🛡️ Tratamento de Objeções</h2>
+            <p>Respostas eficazes para as principais objeções que você pode encontrar durante o processo de vendas.</p>
+            
+            <div class="objections-list">
+                <div class="objection-item">
+                    <h4>💰 "O custo é muito alto para nosso orçamento"</h4>
+                    <p><strong>Contorno:</strong> Entendemos a preocupação com orçamento, mas considere que nosso FinOps oferece payback em menos de 3 meses com economia média de 25-35% nos custos AWS. Para clientes que já são MSP Darede, o serviço está incluído sem custo adicional. É um investimento que se paga rapidamente e gera economia contínua, transformando-se de custo em fonte de receita através da otimização.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>👨‍💻 "Nossa equipe já gerencia os custos AWS"</h4>
+                    <p><strong>Contorno:</strong> Reconhecemos que vocês têm uma equipe competente, mas nossa solução não substitui sua equipe - ela a potencializa. Reduzimos 70% do tempo gasto com relatórios manuais e análises operacionais repetitivas, liberando sua equipe para focar em projetos estratégicos e inovação. Transformamos tarefas manuais em automações inteligentes, permitindo que seus profissionais se concentrem no que realmente importa para o negócio.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>🚫 "Não queremos depender de ferramenta externa"</h4>
+                    <p><strong>Contorno:</strong> Você mantém controle total das decisões - fornecemos insights, vocês aprovam as ações. Oferecemos POC gratuita para validação sem compromisso.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>📊 "Nossos custos são previsíveis, não precisamos de monitoramento"</h4>
+                    <p><strong>Contorno:</strong> Mesmo com custos estáveis, identificamos 15-25% de economia através de recursos órfãos, snapshots esquecidos e otimizações simples.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>⚠️ "Já tentamos outras soluções de FinOps"</h4>
+                    <p><strong>Contorno:</strong> Nossa diferença é combinar tecnologia Pier Cloud com consultoria humana dedicada, não somos apenas ferramenta. SLAs garantem resultados.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>⏰ "Não temos tempo para implementar mais uma ferramenta"</h4>
+                    <p><strong>Contorno:</strong> A implementação é conduzida pela Darede com mínima interferência. Setup em 2-4 semanas e economia de tempo imediata com automações.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>📉 "Nosso billing AWS não é alto o suficiente"</h4>
+                    <p><strong>Contorno:</strong> Mesmo com billing menor, 10% de economia já gera ROI positivo. Prepara infraestrutura para crescimento controlado desde cedo.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>🚀 "Preferimos investir em crescimento que otimização"</h4>
+                    <p><strong>Contorno:</strong> Otimização de custos É investimento em crescimento - cada real economizado pode ser reinvestido em desenvolvimento e inovação.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>🤖 "Não confiamos em automações para infraestrutura"</h4>
+                    <p><strong>Contorno:</strong> Implementação gradual com você no controle. Começamos com recomendações de baixo risco, você decide o que implementar.</p>
+                </div>
+
+                <div class="objection-item">
+                    <h4>🤝 "Nosso MSP já inclui gestão de custos"</h4>
+                    <p><strong>Contorno:</strong> MSP tradicional mantém infraestrutura funcionando, FinOps é especializado em otimização financeira. Para MSP Darede, está incluído sem custo adicional.</p>
                 </div>
             </div>
         </section>
